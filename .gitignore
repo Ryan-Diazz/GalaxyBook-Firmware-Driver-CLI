@@ -1,0 +1,47 @@
+# Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Python virtual environments
+.venv/
+.env/
+venv/
+env/
+
+# pipx installations / local binaries
+*.egg-info/
+dist/
+build/
+
+# Logs
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDE/editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*.sublime-project
+*.sublime-workspace
+
+# Pytest cache
+.pytest_cache/
+
+# mypy type checking
+.mypy_cache/
+
+# coverage reports
+htmlcov/
+.coverage
+.coverage.*
+.cache
+
+# system / temporary files
+*.tmp
+*.bak
+*~
