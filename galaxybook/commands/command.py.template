@@ -1,0 +1,62 @@
+# galaxybook/commands/<command_name>.py
+from galaxybook.utils import read, write
+
+FILE_PATH = "/PATH/TO/ATTRIBUTE/FILE"
+
+# ------------------
+# register command
+# ------------------
+
+def register(subparsers):
+    # Register CLI arguments for this feature.
+    parser = subparsers.add_parser(
+        "<command-name>",
+        help="Short description of the command"
+    ) 
+
+    actions = parser.add_subparsers(dest="action")
+
+    # show command
+    show_parser = actions.add_parser("show", help="Show command for the current feature")
+    show_parser.set_defaults(
+        func=handle_show,
+        requires_root=False
+    )
+
+    # set command
+    set_parser = actions.add_parser("set", help="Set command for the current feature")
+    set_parser.add_argument(
+        "value",
+        type=int,
+        help="value needed for this command"
+    )
+
+    set_parser.set_defaults(
+        func=handle_set,
+        requires_root=True
+    )
+
+    parser.set_defaults(func=lambda args: parser.print_help())
+
+
+# ------------------
+# handlers
+# ------------------
+
+def handle_show(args):
+    show()
+
+def handle_set(args):
+    set_value(args.value)
+
+
+# ------------------
+# command implementations
+# ------------------
+
+def show():
+    print("Show current value")
+
+
+def set_value(value):
+    print(f"Setting value to {value}")

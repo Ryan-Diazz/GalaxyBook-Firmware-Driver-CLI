@@ -1,48 +1,133 @@
-# Galaxy Book Recording Block command
+# GalaxyBook Firmware Driver CLI
 
-`recording` is a simple command-line utility for managing the 'Block Recording' feature present in the samsung-galaxybook firmware present in linux kernel 6.15 and up.
+`galaxybook` is a simple command-line utility for managing the features present in the samsung-galaxybook firmware, that is mainline since linux kernel 6.15 and up.
 
 ## Usage
 
-`recording` gives the possible argument options accepted by the script
+the base command `galaxybook` will give an overview of the current features implenented into the CLI. After galaxybook you can run the following commands:
 
-`recording show` gives the current status of the 'Block Recording'
+### recording
+Manages the 'Block Recording' firmware attribute present in the firmware.
 
-`recording on` enables 'Block Recording', thus disabling the webcam
+`recording` gives the recording help overview showing the following
 
-`recording off` disables 'Block Recording', thus enabling the webcam
+  -  `recording show` gives the current status of the 'Block Recording'
 
-`recording toggle` toggles 'Block Recording'
+  -  `recording on` enables 'Block Recording', thus disabling the webcam
+
+  -  `recording off` disables 'Block Recording', thus enabling the webcam
+
+  -  `recording toggle` toggles 'Block Recording'
+
+
+### batterylimit
+Manages the 'Battery charge control end threshold' feature from the firmware
+
+`batterylimit` show the current battery limit and set an new one if wanted.
+
+   - `batterylimit show` Shows the current Battery Charge Limit
+
+   - `batterylimit set` Set Battery Charge Limit (80-100)
+
+### powerlid
+Manages the 'Power on lid open' firmware attribute present in the firmware.
+
+`powerlid` gives the recording help overview showing the following
+
+  -  `powerlid show` gives the current status of 'power on lid open'
+
+  -  `powerlid on` enables 'power on lid open'
+
+  -  `powerlid off` disables 'power on lid open'
+
+  -  `powerlid toggle` toggles 'Power on lid open'
+
 
 ## Installation
 
-1. Download or save the script as `recording.sh`
-2. Make the script executable
+1. Download the repository
 
    ```bash
-   chmod +x recording.sh
+   git clone https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI.git
+
+   cd GalaxyBook-Firmware-Driver-CLI
    ```
 
-3. Move the script to `/usr/local/bin`
+2. install pipx (if not installed)
+
+   On Debian/Ubuntu:
+   ```bash
+   sudo apt install pipx
+   pipx ensurepath
+   ```
+
+   verify:
 
    ```bash
-   sudo mv recording.sh /usr/local/bin/recording
+   pipx --version
    ```
-   Note that it renamed `recording.sh` to `recording` this makes sure that you don't have to type '.sh' everytime you want to use the command
 
+3. Install the cli locally
 
-4. (Optional) Enable passwordless `sudo` for this command
-
-   To allow the command to run without prompting for a password when writing to the firmware attribute:
+   make sure you are in the same folder as where the pyproject.toml is located
 
    ```bash
-   sudo visudo
+   pipx install .
    ```
 
-   Add the following line at the end of the file (replace `youruser` with your username):
+4. Verify installation
+   run:
 
-   ```
-   youruser ALL=(ALL) NOPASSWD: /usr/bin/tee /sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value
+   ```bash
+   galaxybook
    ```
 
-   This allows `sudo tee` to write to the attribute file without exposing full sudo privileges.
+   which will show you the possible functions of the CLI
+
+5. Sudo
+
+   when running `galaxybook` with `sudo` you may get 
+   ```
+   command not found
+   ```
+   this is because `sudo` resets your path
+
+   #### Option 1: Use `sudo -E galaxybook`
+      With the option `-E` sudo preserves user PATH, which lets you run the modifying commands of `galaxybook`
+
+   #### Option 2: Add pipx local bin path to sudo secure_path
+      Open sudo configuration:
+
+      ```bash
+      sudo visudo
+      ``` 
+
+      Find the line starting with:
+      ```
+      Defaults secure_path=...
+      ```
+
+      At the end add:
+      ```
+      :/home/YOUR_USERNAME/.local/bin
+      ```
+      <br>
+
+      example: **Do Not Use this, Keep your OWN base String**
+      ```
+      Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/YOUR_USERNAME/.local/bin"
+      ```
+
+
+# License
+This project is licensed under the terms of the MIT license. check the `LICENCE` File for more information
+
+
+# Contribution
+Running linux on an Samsung Galaxy Book (NP750XGJ) has proven quite a challange. Thanks to the awesome work of Joshua Grisham, the Driver situation has massively improved. However the control software has always felt a bit lacking. That’s why I started building this CLI, to make managing the machine a bit more user friendly.
+
+I plan to add more features over time, but since this project is open source on GitHub, feel free to contribute! If something is missing, broken, or could be improved, don’t hesitate to open a pull request.
+
+Have a wonderful day,
+
+Ryan

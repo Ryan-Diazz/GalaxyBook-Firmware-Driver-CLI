@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# the beginning and escalation :P
+
 # Path to the block recording attribute
 FILE="/sys/class/firmware-attributes/samsung-galaxybook/attributes/block_recording/current_value"
 
