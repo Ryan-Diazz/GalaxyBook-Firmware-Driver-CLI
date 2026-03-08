@@ -1,16 +1,12 @@
-from galaxybook.utils import read, write
+from galaxybook.utils import read, write, perm
 
 FILE_PATH = "/sys/class/power_supply/BAT1/charge_control_end_threshold"
 
 # ------------------
 # register command
 # ------------------
-
 def register(subparsers):
-    parser = subparsers.add_parser(
-        "batterylimit",
-        help="Manage the battery charge limit from 80 to 100"
-    ) 
+    parser = subparsers.add_parser("limit", help="Manage battery charge limit from 80%% to 100%%")
 
     actions = parser.add_subparsers(dest="action")
 
@@ -28,7 +24,6 @@ def register(subparsers):
         type=int,
         help="Battery charge limit (80–100)"
     )
-
     set_parser.set_defaults(
         func=handle_set,
         requires_root=True
@@ -39,17 +34,16 @@ def register(subparsers):
 # ------------------
 # handlers
 # ------------------
-
 def handle_show(args):
     show()
 
 def handle_set(args):
     set_value(args.value)
 
+
 # ------------------
 # command implementations
 # ------------------
-
 def show():
     value = read(FILE_PATH)
     print(f"Current charge threshold: {value}%")
