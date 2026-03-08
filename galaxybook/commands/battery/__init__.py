@@ -3,7 +3,7 @@ from . import limit, health, status, wattage, info
 def register(subparsers):
     parser = subparsers.add_parser(
         "battery",
-        help="Manage battery-related features"
+        help="Manage battery features"
     )
     # Nested subparsers for battery subcommands
     battery_parsers = parser.add_subparsers(dest="battery_commands")

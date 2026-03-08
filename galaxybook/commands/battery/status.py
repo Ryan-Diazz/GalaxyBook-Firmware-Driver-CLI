@@ -6,7 +6,7 @@ from galaxybook.utils import read, write, perm
 def register(subparsers):
     parser = subparsers.add_parser(
         "status", 
-        help="Show battery status"
+        help = "Show battery status"
     )
 
     parser.set_defaults(func=handle)
@@ -26,9 +26,9 @@ def show():
     capacity = curr_capacity()
     capacity_level = curr_capacity_level()
 
-    voltage = voltage_now() / 1_000_000
-    current = current_now() / 1_000_000
-    wattage = voltage * current
+    voltage = curr_voltage() 
+    current = curr_current() 
+    wattage = curr_wattage()
     
     print("Battery Status".center(40, "-"))
     print(f"{'Status:':20} {status}")
@@ -37,15 +37,16 @@ def show():
     print(f"{'Voltage:':20} {voltage:.2f} V")
     print("-" * 40)
 
-def voltage_now():
+
+def curr_voltage():
     FILE_PATH = "/sys/class/power_supply/BAT1/voltage_now"
     value = read(FILE_PATH)
-    return float(value)
+    return float(value) / 1_000_000
 
-def current_now():
+def curr_current():
     FILE_PATH = "/sys/class/power_supply/BAT1/current_now"
     value = read(FILE_PATH)
-    return float(value)
+    return float(value) / 1_000_000
 
 def curr_capacity():
     FILE_PATH = "/sys/class/power_supply/BAT1/capacity"
@@ -61,3 +62,6 @@ def curr_status():
     FILE_PATH = "/sys/class/power_supply/BAT1/status"
     value = read(FILE_PATH)
     return value
+
+def curr_wattage():
+    return curr_voltage() * curr_current()

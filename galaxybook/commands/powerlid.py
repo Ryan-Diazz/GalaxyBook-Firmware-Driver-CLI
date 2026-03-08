@@ -7,7 +7,7 @@ FILE_PATH = "/sys/class/firmware-attributes/samsung-galaxybook/attributes/power_
 # register command
 # ------------------
 def register(subparsers):
-    parser = subparsers.add_parser("powerlid", help="Manage power on lid open firmware attribute")
+    parser = subparsers.add_parser("powerlid", help="Manage 'power on lid open' firmware attribute")
 
     actions = parser.add_subparsers(dest="action")
 
