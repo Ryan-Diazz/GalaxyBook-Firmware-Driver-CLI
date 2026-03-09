@@ -4,7 +4,11 @@
 
 ## Usage
 
-the base command `galaxybook` will give an overview of the current features implenented into the CLI. After galaxybook you can run the following commands:
+the base command `galaxybook` will give an overview of the current features implenented into the CLI. 
+
+It can be run without sudo for features that doesn't write to a file. Permission warnings will show for cammonds requiring sudo.
+
+After `galaxybook` you can run the following commands:
 
 ### recording
 Manages the 'Block Recording' firmware attribute present in the firmware.
@@ -20,14 +24,21 @@ Manages the 'Block Recording' firmware attribute present in the firmware.
   -  `recording toggle` toggles 'Block Recording'
 
 
-### batterylimit
-Manages the 'Battery charge control end threshold' feature from the firmware
+### battery
+Manages the Battery features from the firmware
 
-`batterylimit` show the current battery limit and set an new one if wanted.
+`battery` Manage battery features
 
-   - `batterylimit show` Shows the current Battery Charge Limit
+   - `battery info` Show battery information
 
-   - `batterylimit set` Set Battery Charge Limit (80-100)
+   - `battery status` Show battery status
+
+   - `battery health` show battery health
+
+   - `battery limit` Manage battery charge limit from 80% to 100%
+
+   - `battery wattage` Monitor system wattage (current, minimum, maximum, avarage)
+
 
 ### powerlid
 Manages the 'Power on lid open' firmware attribute present in the firmware.
@@ -43,7 +54,26 @@ Manages the 'Power on lid open' firmware attribute present in the firmware.
   -  `powerlid toggle` toggles 'Power on lid open'
 
 
+### Keyboard Backlight
+Manage keyboard backlight with percentages (most keyboards only support modes 0-3 but percentage allows for different maximums)
+
+`kb-light` Manage keyboard backlight
+   - `show` Show current keyboard backlight level
+
+   - `set` Set keyboard backlight brightness as a percentage
+
+
+### Performance mode profile
+Manage power profile through cli (becaus  linux mint doesn't show low-power (fan off) modus)
+
+`profile` Manage Performace mode profile
+   - `show` shows possible choices for power profiles in oder from low power to high power
+
+   - `set [name]` Set performace profile (with autocomplete for name)
+
+
 ## Installation
+requires Python > 3.9
 
 1. Download the repository
 
@@ -120,14 +150,14 @@ Manages the 'Power on lid open' firmware attribute present in the firmware.
 
 
 # License
-This project is licensed under the terms of the MIT license. check the `LICENCE` File for more information
+This project is licensed under the terms of the MIT license. check the [LICENCE](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/blob/main/LICENCE) File for more information
 
 
-# Contribution
-Running linux on an Samsung Galaxy Book (NP750XGJ) has proven quite a challange. Thanks to the awesome work of Joshua Grisham, the Driver situation has massively improved. However the control software has always felt a bit lacking. That’s why I started building this CLI, to make managing the machine a bit more user friendly.
+# About
+Running linux on an Samsung Galaxy Book 4 (NP750XGJ) has proven quite a challange. Thanks to the awesome work of Joshua Grisham's [samsung-galaxybook-extras](https://github.com/joshuagrisham/samsung-galaxybook-extras), the Driver situation has massively improved. However the software support for the driver has felt a bit lacking. That’s why I started building this CLI, to make managing my machine a bit more user friendly.
 
-I plan to add more features over time, but since this project is open source on GitHub, feel free to contribute! If something is missing, broken, or could be improved, don’t hesitate to open a pull request.
+I should have all the important features implemented, but since this project is open source on GitHub, feel free to contribute! If something is missing, broken, or could be improved, don’t hesitate to open a pull request.
 
-Have a wonderful day,
+Have a wonderful day and enjoy easier management,
 
 Ryan

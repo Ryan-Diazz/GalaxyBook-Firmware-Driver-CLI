@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
+# PYTHON_ARGCOMPLETE_OK
 
 import argparse
+import argcomplete
 import importlib
 import pkgutil
 import galaxybook.commands as commands_pkg
@@ -27,19 +29,7 @@ def main():
 
     loadCommands(subparsers)
 
-    # # recording command
-    # record_parser = subparsers.add_parser("recording")
-    # record_parser.add_argument(
-    #     "action",
-    #     choices=["show", "toggle", "on", "off"]
-    # )
-
-    # #powerlid command
-    # lid_parser = subparsers.add_parser("powerlid")
-    # lid_parser.add_argument(
-    #     "action",
-    #     choices=["show", "toggle", "on", "off"]
-    # )
+    argcomplete.autocomplete(parser)
 
     args = parser.parse_args()
 

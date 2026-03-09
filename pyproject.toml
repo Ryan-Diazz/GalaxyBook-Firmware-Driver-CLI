@@ -1,9 +1,24 @@
 [project]
 name = "galaxybook"
-version = "0.1.1"
+version = "0.1.2"
 description = "Samsung Galaxy Book firmware control CLI"
+readme = "README.md"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "argcomplete>=3.0"
+]
 
+# Entry point for your CLI
 [project.scripts]
 galaxybook = "galaxybook.cli:main"
+
+[build-system]
+requires = ["setuptools>=65", "wheel", "setuptools_scm[toml]>=6.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+# Specify source directory
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]

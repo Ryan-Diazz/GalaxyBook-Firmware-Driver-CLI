@@ -32,7 +32,7 @@ def show():
     # Current charge percentage
     charge_percent = (now / full) * 100 if full else 0
 
-    print("Battery Info".center(40, "-"))
+    print("Battery Health".center(40, "-"))
     print(f"{'Design Capacity:':20} {design} mAh")
     print(f"{'Full Charge:':20} {full} mAh")
     print(f"{'Current Charge:':20} {now} mAh ({charge_percent:.1f}%)")
