@@ -21,7 +21,7 @@ def handle(args):
 # command implementations
 # ------------------
 def show():    
-    print(f"Battery Status ({name()})".center(40, "-"))
+    print(f"Battery Information ({name()})".center(40, "-"))
     print(f"{'Manufacturer:':20} {manufacturer()}")
     print(f"{'Model Name:':20} {model_name()}")
     print(f"{'Serial Number:':20} {serial()}")
