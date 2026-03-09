@@ -1,9 +1,11 @@
 [project]
 name = "galaxybook"
-version = "0.1.1"
+version = "0.1.2"
 description = "Samsung Galaxy Book firmware control CLI"
 requires-python = ">=3.9"
-dependencies = []
+dependencies = [
+    "argcomplete>=3.0"
+]
 
 [project.scripts]
 galaxybook = "galaxybook.cli:main"
