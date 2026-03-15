@@ -75,85 +75,31 @@ Manage power profile through cli (becaus  linux mint doesn't show low-power (fan
 ## Installation
 requires Python > 3.9
 
-1. Download the repository
+### 1. Download the '*.deb' from the latest release
 
-   ```bash
-   git clone https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI.git
+   Navigate to the [Latest release](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/releases/latest), From there download the latest `galaxybook-firmware-driver-cli_x.x.x_all.deb` file
 
-   cd GalaxyBook-Firmware-Driver-CLI
-   ```
-
-2. install pipx (if not installed)
+### 2. Install using dpkg
 
    On Debian/Ubuntu:
    ```bash
-   sudo apt install pipx
-   pipx ensurepath
+   sudo dpkg -i galaxybook-firmware-driver-cli_x.x.x_all.deb
    ```
 
-   verify:
+### 3. Enjoy!
 
-   ```bash
-   pipx --version
-   ```
-
-3. Install the cli locally
-
-   make sure you are in the same folder as where the pyproject.toml is located
-
-   ```bash
-   pipx install .
-   ```
-
-4. Verify installation
-   run:
-
+   Run
    ```bash
    galaxybook
    ```
-
-   which will show you the possible functions of the CLI
-
-5. Sudo
-
-   when running `galaxybook` with `sudo` you may get 
-   ```
-   command not found
-   ```
-   this is because `sudo` resets your path
-
-   #### Option 1: Use `sudo -E galaxybook`
-      With the option `-E` sudo preserves user PATH, which lets you run the modifying commands of `galaxybook`
-
-   #### Option 2: Add pipx local bin path to sudo secure_path
-      Open sudo configuration:
-
-      ```bash
-      sudo visudo
-      ``` 
-
-      Find the line starting with:
-      ```
-      Defaults secure_path=...
-      ```
-
-      At the end add:
-      ```
-      :/home/YOUR_USERNAME/.local/bin
-      ```
-      <br>
-
-      example: **Do Not Use this, Keep your OWN base String**
-      ```
-      Defaults secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/home/YOUR_USERNAME/.local/bin"
-      ```
+   An help overview should appear with all the possible function currently implementented in `galaxybook-cli`
 
 
 # License
 This project is licensed under the terms of the MIT license. check the [LICENCE](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/blob/main/LICENCE) File for more information
 
-# Make Your Own Build
-For build instructions refrence [BUILD](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/blob/main/BUILD.md)
+# Build
+For build instructions please read [BUILD](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/blob/main/BUILD.md).
 
 # About
 Running linux on an Samsung Galaxy Book 4 (NP750XGJ) has proven quite a challange. Thanks to the awesome work of Joshua Grisham's [samsung-galaxybook-extras](https://github.com/joshuagrisham/samsung-galaxybook-extras), the Driver situation has massively improved. However the software support for the driver has felt a bit lacking. That’s why I started building this CLI, to make managing my machine a bit more user friendly.
