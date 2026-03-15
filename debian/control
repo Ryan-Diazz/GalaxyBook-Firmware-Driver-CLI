@@ -1,0 +1,15 @@
+Source: galaxybook-firmware-driver-cli
+Section: utils
+Priority: optional
+Maintainer: Ryan Diaz <your@email.com>
+Build-Depends: debhelper-compat (= 13), dh-python, python3-all
+Standards-Version: 4.6.2
+Homepage: https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI
+Rules-Requires-Root: no
+
+Package: galaxybook-firmware-driver-cli
+Architecture: all
+Depends: ${python3:Depends}, ${misc:Depends}
+Description: CLI tool for Samsung GalaxyBook firmware and driver management
+ Command line utility for interacting with GalaxyBook firmware drivers
+ on Linux systems.

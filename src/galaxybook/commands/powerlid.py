@@ -1,5 +1,6 @@
 import subprocess
-from galaxybook.utils import perm
+from galaxybook.utils import read, write, perm
+
 
 FILE_PATH = "/sys/class/firmware-attributes/samsung-galaxybook/attributes/power_on_lid_open/current_value"
 
