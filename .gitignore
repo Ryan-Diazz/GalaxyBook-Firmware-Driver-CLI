@@ -47,3 +47,11 @@ htmlcov/
 *.tmp
 *.bak
 *~
+
+# build files
+*.debhelper
+*.substvars
+.pybuild
+debhelper-build-stamp
+files
+debian/galaxybook-firmware-driver-cli/

@@ -1,0 +1,7 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: galaxybook-firmware-driver-cli
+Source: https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI
+
+Files: *
+Copyright: 2026 Ryan Diaz
+License: MIT

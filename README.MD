@@ -152,6 +152,8 @@ requires Python > 3.9
 # License
 This project is licensed under the terms of the MIT license. check the [LICENCE](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/blob/main/LICENCE) File for more information
 
+# Make Your Own Build
+For build instructions refrence [BUILD](https://github.com/Ryan-Diazz/GalaxyBook-Firmware-Driver-CLI/blob/main/BUILD.md)
 
 # About
 Running linux on an Samsung Galaxy Book 4 (NP750XGJ) has proven quite a challange. Thanks to the awesome work of Joshua Grisham's [samsung-galaxybook-extras](https://github.com/joshuagrisham/samsung-galaxybook-extras), the Driver situation has massively improved. However the software support for the driver has felt a bit lacking. That’s why I started building this CLI, to make managing my machine a bit more user friendly.
