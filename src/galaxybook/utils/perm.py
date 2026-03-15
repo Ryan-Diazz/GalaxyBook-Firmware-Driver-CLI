@@ -6,5 +6,4 @@ def require_root():
         cmd = os.path.basename(sys.argv[0])
         print("This command must be run as root!")
         print(f"Try: sudo {cmd} {' '.join(sys.argv[1:])}")
-        print(f"module ran from {sys.argv[0]}")
         sys.exit(1)
